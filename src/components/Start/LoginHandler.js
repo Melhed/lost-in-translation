@@ -1,11 +1,11 @@
-const apiURL = `https://melhed-assignment-api.up.railway.app/translations`;
-const apiKey = `imciemfkmcsdfasdiocmadjicefmwcjxgkgkdhmvz`;
+const apiURL = process.env.REACT_APP_API_URL;
+const apiKey = process.env.REACT_APP_API_KEY;
 
 async function checkUser(username) {
     const user = await fetch(`${apiURL}?username=${username}`)
     .then(res => res.json())
     .then(results => {
-        if(!results[0]) return createUser(username);
+        if(!results[0]) return registerUser(username);
         return results[0];
     })
     .catch(err => console.log(err))
@@ -13,7 +13,7 @@ async function checkUser(username) {
     return user;
 }
 
-async function createUser(username) {
+async function registerUser(username) {
     const user = await fetch(`${apiURL}`, {
         method: "POST",
         headers: {
@@ -37,5 +37,4 @@ async function createUser(username) {
 
 export const loginHandler = {
     checkUser,
-    createUser,
 }
