@@ -1,7 +1,8 @@
 const apiURL = process.env.REACT_APP_API_URL;
 const apiKey = process.env.REACT_APP_API_KEY;
 
-async function checkUser(username) {
+// Fetches and returns user by username, if no such user exists it runs registerUser().
+async function fetchUser(username) {
     const user = await fetch(`${apiURL}?username=${username}`)
     .then(res => res.json())
     .then(results => {
@@ -13,6 +14,7 @@ async function checkUser(username) {
     return user;
 }
 
+// Registers new user and returns the user object. 
 async function registerUser(username) {
     const user = await fetch(`${apiURL}`, {
         method: "POST",
@@ -36,5 +38,5 @@ async function registerUser(username) {
 }
 
 export const loginHandler = {
-    checkUser,
+    fetchUser,
 }

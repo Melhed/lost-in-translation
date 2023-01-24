@@ -4,9 +4,9 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import StartPage from './view/Start';
-import Translation from './view/Translation';
-import Profile from './view/Profile';
+import Login from './components/Login/Login';
+import Translation from './components/Translation/Translation';
+import Profile from './components/Profile/Profile';
 import { UserProvider } from './UserContext';
 
 function App() {
@@ -14,9 +14,9 @@ function App() {
     <UserProvider>
       <Router>
         <Routes>
-          {/* <Route path="/" element={<StartPage />}/> */}
-          {/* <Route path="/" element={<TranslationPage/>}/> */}
-          <Route path="/" element={<Profile/>}/>    
+          <Route path="/" element={<Login />}/>
+          <Route path="/translation" element={<Translation/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
       </Router>
     </UserProvider>
