@@ -1,47 +1,41 @@
-import React, { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { profile } from "./profileHandler"
-import { loginHandler } from '../Login/loginHandler';
-import { UserContext } from '../../UserContext';
-import ProfileHistory from "./ProfileHistory"
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { profileHandler } from "./profileHandler";
+import { UserContext } from "../../UserContext";
+import ProfileHistory from "./ProfileHistory";
+import useValidateUser from "../../useValidateUser";
 
 // Renders the profile view
 const Profile = () => {
-  const { user, setUser } = useContext(UserContext);
-  const navigate = useNavigate();
+	const { user, setUser } = useContext(UserContext);
+	const validateUser = useValidateUser();
+	const navigate = useNavigate();
 
-  // Fetches user data if user is still in session storage, but not in state.
-  useEffect(() => {
-    if(!user.translations) {
-      if(!sessionStorage.getItem("username")) return navigate("/");
-      
-      loginHandler.fetchUser(sessionStorage.getItem("username"))
-      .then(res => {
-        setUser(res);
-        sessionStorage.setItem("username", res.username);
-      });
-    }
-  }, [user.translations, navigate, setUser])
+	useEffect(() => {
+		validateUser();
+	}, [validateUser]);
 
-  // Clears translations and updates user with new user object.
-  const handleClearTranslations = () => {
-    profile.clearTranslations(user.id).then(res => setUser(res));
-  }
+	// Clears translations and updates user with new user object.
+	const handleClearTranslations = () => {
+		profileHandler.clearTranslations(user.id).then((res) => setUser(res));
+	};
 
-  // Clears user data in state and session. 
-  const handleLogout = () => {
-    sessionStorage.clear("username");
-    setUser(null);
-    navigate("/")
-  }
+	// Clears user data in state and session.
+	const handleLogout = () => {
+		sessionStorage.removeItem("username");
+		setUser(null);
+		navigate("/");
+	};
 
-  return (
-    <div>
-      {user.translations && <ProfileHistory translations={user.translations} />}
-      <button onClick={() => handleClearTranslations()}>Clear Translations</button>
-      <button onClick={() => handleLogout()}>Logout</button>
-    </div>
-  )
-}
+	return (
+		<div>
+			{user.translations && <ProfileHistory translations={user.translations} />}
+			<button onClick={() => handleClearTranslations()}>
+				Clear Translations
+			</button>
+			<button onClick={() => handleLogout()}>Logout</button>
+		</div>
+	);
+};
 
-export default Profile
+export default Profile;
