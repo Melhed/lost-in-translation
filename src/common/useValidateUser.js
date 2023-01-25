@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import { useNavigate } from "react-router-dom";
-import { loginHandler } from "./components/Login/loginHandler";
+import { loginHandler } from "../Login/loginHandler";
 
 // Fetches user if present in sessionStorage, but not in state.
 const useValidateUser = () => {
