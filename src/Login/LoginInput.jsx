@@ -22,12 +22,12 @@ const LoginInput = () => {
 		});
 	}
 
-	// Handles potential form input errors.
+	// Handles form input errors.
 	const handleErrors = (() => {
 		if (errors.username?.type === "required")
 			return <span>Username is required.</span>;
 		if (errors.username?.type === "minLength")
-			return <span>Username must be longer than 2 characters.</span>;
+			return <span>Username must be 3 characters or longer.</span>;
 		if (errors.username?.type === "maxLength")
 			return <span>Username must be shorter than 20 characters.</span>;
 	})();

@@ -1,9 +1,9 @@
 import React from "react";
-const uuid = require("uuid");
 
 // Loops through every word and character and fetches the corresponding signs.
 const TranslationList = ({ signs }) => {
 	const getSignPath = (char) => `assets/signs/${char}.png`;
+	let count = 0;
 
 	// Inserts spacing between words.
 	return (
@@ -14,7 +14,7 @@ const TranslationList = ({ signs }) => {
 						src={getSignPath(char)}
 						alt={`${char}`}
 						className="h-24"
-						key={uuid.v4()}
+						key={count++}
 					/>
 				));
 			})}

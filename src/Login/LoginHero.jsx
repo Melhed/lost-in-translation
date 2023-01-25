@@ -9,6 +9,7 @@ const LoginHero = () => {
 					alt="Robot Saying Hello"
 					className="h-48 my-auto"
 				/>
+
 				<div className="my-auto text-white">
 					<h1 className="text-6xl font-lylas">Lost in translation</h1>
 					<h2 className="text-4xl font-sanchez">Get started</h2>

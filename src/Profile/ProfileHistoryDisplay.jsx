@@ -21,7 +21,7 @@ const ProfileHistoryDisplay = () => {
 	};
 
 	return (
-		<div className="w-1/2 min-h-[300px] relative mx-auto py-2 mt-10 bg-gray-100 rounded-xl font-sanchez shadow-lg">
+		<div className="w-1/2 min-h-[300px] relative mx-auto pb-10 mt-10 bg-gray-100 rounded-xl font-sanchez shadow-lg">
 			{user.translations && (
 				<ProfileHistoryList translations={user.translations} />
 			)}
