@@ -9,7 +9,7 @@ const TranslationList = ({ signs }) => {
 	return (
 		<div className="flex flex-wrap">
 			{signs.map((word) => {
-				return Array.from(word).map((char) => (
+				return Array.from(word.toLowerCase()).map((char) => (
 					<img
 						src={getSignPath(char)}
 						alt={`${char}`}
