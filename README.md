@@ -1,4 +1,4 @@
-# Lost in Translation
+# [Lost in Translation](https://lost-in-translation-eight.vercel.app/)
 
 **What is Lost in Translation?**
 * A website where the user can translate text into ASL and view their previous translations.
