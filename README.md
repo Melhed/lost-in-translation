@@ -1,70 +1,20 @@
-# Getting Started with Create React App
+# Lost in Translation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**What is Lost in Translation?**
+* A website where the user can translate text into ASL and view their previous translations.
 
-## Available Scripts
+**What technologies were used?**
+* The project was created using ReactJS, TailwindCSS, a JSON server deployed on Railway, and various ReactJS hooks. The ReactJS hooks used were React Hook Form and React Router as well as a custom hook I created in order to validate the user's login. TailwindCSS was used due to familiarity and the amount of styling needed wouldn't make the code too cluttered and/or unreadable. 
 
-In the project directory, you can run:
+**What challenges were faced?**
+* I underestimated the amount of code needed to create a presentable website that is able to translate into ASL. This resulted in the component tree being quite different from the initial component tree I created as a guide in Figma (see Figma_Lost_in_translation.pdf). This is mainly due to "exporting" snippets of code into more reusable ReactJS components rather than having inline component code.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Feature breakdown**
+* JSON server/db
+  - Keeps track of the user's in terms of username, user ID, and previous translations made on the site. 
+* Login page
+  - Consists of a hero and a username input form that validates input to ensure that the username isn't too short, too long, or is empty. Once input is submitted the user's data (previous translations and ID) is fetched from the JSON server assuming the username already exists. If the username doesn't exist, a new entry is created in the db. Once this process is over the user info (username, ID, translation history) is stored in the session storage and the user is redirected to the translation page.
+* Translation page
+    - Mainly consists of a navbar, hero containing an input field, as well as a component that displays the input generated from the input field in ASL. Once a user has submitted their input it is checked for invalid characters (special characters and numbers) after which it is uploaded to the db and translated. The display component shows the ASL translation, as well as the input that generated said translation. The navbar contains the "logo" and name of the website along with a button that redirects the user to the profile page. 
+* Profile page
+  - Consists of a component which displays the user's 10 previous translations in reversed chronological order as well as a button that clears translations and a logout button. The logout button clears the session storage and redirects the user to the login page. 
