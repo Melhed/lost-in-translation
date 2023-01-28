@@ -5,7 +5,7 @@ const TranslationList = ({ signs }) => {
 	const getSignPath = (char) => `assets/signs/${char}.png`;
 	let count = 0;
 
-	// Inserts spacing between words.
+	// Translates the user input and makes an array of img-elements.
 	return (
 		<div className="flex flex-wrap">
 			{signs.map((word) => {

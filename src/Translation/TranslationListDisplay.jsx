@@ -4,8 +4,10 @@ import TranslationList from "./TranslationList";
 const TranslationListDisplay = ({ signs }) => {
 	const navigate = useNavigate();
 
+	// Displays the array of img-elements.
 	return (
 		<div className="w-1/2 relative mx-auto mt-10 bg-gray-100 rounded-xl font-sanchez shadow-lg">
+			{/* Shows the text input for the currently displayed translation */}
 			{signs[0] && (
 				<div className="absolute flex h-10 w-full top-0 bg-amber-400 rounded-t-xl">
 					<span className="my-auto ml-3 text-white text-xl">

@@ -15,6 +15,7 @@ const Navbar = ({ user }) => {
 				/>
 				<h1 className="text-3xl my-auto">Lost in Translation</h1>
 			</div>
+
 			{user && (
 				<div className="my-auto md:mr-44 mr-0 h-18">
 					<Link to={"/profile"}>

@@ -1,6 +1,6 @@
 import React from "react";
 
-// Displays the user's translation history.
+// Reverses and displays the user's 10 most recent translations.
 const ProfileHistoryList = ({ translations }) => {
 	let count = 0;
 	let reversedTranslations = translations.slice(0).reverse();
